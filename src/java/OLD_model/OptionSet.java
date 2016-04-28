@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package model;
+package OLD_model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

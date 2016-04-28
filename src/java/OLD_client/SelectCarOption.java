@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package client;
+package OLD_client;
 
 import java.awt.GridLayout;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import model.Automobile;
-import model.OptionSet;
+import OLD_model.Automobile;
+import OLD_model.OptionSet;
 
 /**
  *

@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 
-package adapter;
+package OLD_client;
 
 /**
  *
  * @author keerthanathangaraju
  */
-public class BuildAuto extends proxyAutomobile implements CreateAuto,UpdateAuto, FixAuto{
-    
+public interface SocketClientInterface {
+    boolean openConnection();
+    void handleSession();
+    void closeSession();
 }

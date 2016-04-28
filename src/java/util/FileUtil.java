@@ -5,7 +5,7 @@
  */
 package util;
 
-import CustomException.AutomobileCustomException;
+import OLD_CustomException.AutomobileCustomException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,7 +18,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.LinkedHashMap;
 import java.util.Properties;
-import model.Automobile;
+import OLD_model.Automobile;
 
 /**
  *

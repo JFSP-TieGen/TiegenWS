@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package client;
+package OLD_client;
 
-import CustomException.AutomobileCustomException;
+import OLD_CustomException.AutomobileCustomException;
 import adapter.autoClient;
 import adapter.proxyAutomobile;
 import java.io.FileInputStream;

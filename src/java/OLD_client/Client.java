@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package client;
+package OLD_client;
 
-import CustomException.AutomobileCustomException;
+import OLD_CustomException.AutomobileCustomException;
 import java.io.*;
 import java.net.*;
 import java.util.Properties;
-import model.Automobile;
+import OLD_model.Automobile;
 
 /**
  *
