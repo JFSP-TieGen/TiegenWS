@@ -8,11 +8,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Db {
 
 	protected Connection connection;
 	protected Properties dbProps;
+        private  String driver = "com.mysql.jdbc.Driver";
 
 	public Db() {
 		try {
@@ -25,6 +28,11 @@ public class Db {
 			String url1 = dbProps.getProperty("jdbc_url");
 			String user = dbProps.getProperty("user_name");
 			String password = dbProps.getProperty("password");
+                    try {
+                        Class.forName(driver);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Db.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
 			c1 = DriverManager.getConnection(url1, user, password);
 			if (c1 != null) {
@@ -37,25 +45,25 @@ public class Db {
 			stmt.executeUpdate(sqlUserInfo);
 			stmt.close();
 
-			stmt = c1.createStatement();
-			String sqlSPInfo = dbProps.getProperty("serviceprovider_info_ddl");
-			stmt.executeUpdate(sqlSPInfo);
-			stmt.close();
-
-			stmt = c1.createStatement();
-			String sqlBookings = dbProps.getProperty("bookings_ddl");
-			stmt.executeUpdate(sqlBookings);
-			stmt.close();
-			
-			stmt = c1.createStatement();
-			String sqlRatings = dbProps.getProperty("ratings_ddl");
-			stmt.executeUpdate(sqlRatings);
-			stmt.close();
-			
-			stmt = c1.createStatement();
-			String sqlBookMarks = dbProps.getProperty("bookmarks_ddl");
-			stmt.executeUpdate(sqlBookMarks);
-			stmt.close();
+//			stmt = c1.createStatement();
+//			String sqlSPInfo = dbProps.getProperty("serviceprovider_info_ddl");
+//			stmt.executeUpdate(sqlSPInfo);
+//			stmt.close();
+//
+//			stmt = c1.createStatement();
+//			String sqlBookings = dbProps.getProperty("bookings_ddl");
+//			stmt.executeUpdate(sqlBookings);
+//			stmt.close();
+//			
+//			stmt = c1.createStatement();
+//			String sqlRatings = dbProps.getProperty("ratings_ddl");
+//			stmt.executeUpdate(sqlRatings);
+//			stmt.close();
+//			
+//			stmt = c1.createStatement();
+//			String sqlBookMarks = dbProps.getProperty("bookmarks_ddl");
+//			stmt.executeUpdate(sqlBookMarks);
+//			stmt.close();
 
 			this.connection = c1;
 			this.dbProps = dbProps;
