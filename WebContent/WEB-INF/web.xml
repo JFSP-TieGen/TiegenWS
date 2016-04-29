@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  
+  <servlet>
+    <servlet-name>signUp</servlet-name>
+    <servlet-class>controller.UserSignUpCtl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>controller.UserLoginCtl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>AddBookMark</servlet-name>
+    <servlet-class>controller.AddBookMarkCtl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>BookService</servlet-name>
+    <servlet-class>controller.BookServiceCtl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>CancelBooking</servlet-name>
+    <servlet-class>controller.CancelBookingCtl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>EditRate</servlet-name>
+    <servlet-class>controller.EditRateCtl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>RateBooking</servlet-name>
+    <servlet-class>controller.RateBookingCtl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchService</servlet-name>
+    <servlet-class>controller.SearchServiceCtl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ViewAllRates</servlet-name>
+    <servlet-class>controller.ViewAllRatesCtl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ViewBookMarks</servlet-name>
+    <servlet-class>controller.ViewBookMarkCtl</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ViewCalendarDay</servlet-name>
+    <servlet-class>controller.ViewCalendarDayCtl</servlet-class>
+  </servlet>
+  
+  
+  
+  <servlet-mapping>
+    <servlet-name>signUp</servlet-name>
+    <url-pattern>/client/signUp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/client/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AddBookMark</servlet-name>
+    <url-pattern>/client/addBookmark</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BookService</servlet-name>
+    <url-pattern>/client/bookService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CancelBooking</servlet-name>
+    <url-pattern>/client/cancelBooking</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EditRate</servlet-name>
+    <url-pattern>/client/editRate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RateBooking</servlet-name>
+    <url-pattern>/client/rateBooking</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchService</servlet-name>
+    <url-pattern>/client/searchService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewAllRates</servlet-name>
+    <url-pattern>/client/showAllRates</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewBookMarks</servlet-name>
+    <url-pattern>/client/displayBookmarks</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewCalendarDay</servlet-name>
+    <url-pattern>/client/viewCalendarDay</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
