@@ -26,17 +26,21 @@ public class UserSignUpCtl extends HttpServlet {
 		//get the username and password from front end
         User user = (User) request.getAttribute("user");
 		//call the biz layer functions
-		if(userbiz.verifyUsername(user.getUserName())){
-			/*
-			 * we need to figure out how backend talk to front end and forward some 
-			 * message here to front end
-			 */
-		}else{
-			userbiz.signUp(user);
-			/*
-			 * we need to figure out how backend talk to front end and forward some 
-			 * message here to front end
-			 */
+		try {
+			if(userbiz.verifyUsername(user.getUserName())){
+				/*
+				 * we need to figure out how backend talk to front end and forward some 
+				 * message here to front end
+				 */
+			}else{
+				userbiz.signUp(user);
+				/*
+				 * we need to figure out how backend talk to front end and forward some 
+				 * message here to front end
+				 */
+			}
+		} catch (Exception e) {
+			throw new IOException(e);
 		}
 		
 	}

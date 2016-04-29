@@ -4,14 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import entity.User;
+
 public class UserInfoDao extends Db {
 
-	public void create(String userName, String password, String location) throws SQLException {
+	public void create(String userName, String password) throws SQLException {
 		// TODO: userinfo_insert
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("userinfo_insert"));
 		stmt.setString(1, userName);
 		stmt.setString(2, password);
-		stmt.setString(3, location);
 		stmt.executeUpdate();
 		stmt.close();
 	}
@@ -21,10 +22,29 @@ public class UserInfoDao extends Db {
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("userinfo_get_id"));
 		stmt.setString(1, userName);
 		ResultSet rs = stmt.executeQuery();
-		rs.next();
-		int autoId = rs.getInt(1);
+		boolean exists = rs.next();
+		int userId = -1;
+		if (exists) {
+			userId = rs.getInt(1);
+		}
 		stmt.close();
-		return autoId;
+		return userId;
+	}
+
+	public User loginUser(String userName, String password) throws SQLException {
+		// TODO: userinfo_get_user
+		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("userinfo_get_user"));
+		stmt.setString(1, userName);
+		stmt.setString(1, password);
+		ResultSet rs = stmt.executeQuery();
+		boolean exists = rs.next();
+		User user = null;
+		if (exists) {
+			user = new User(rs.getString(2), rs.getString(3));
+			user.setUserId(rs.getInt(1));
+		}
+		stmt.close();
+		return user;
 	}
 
 	public void delete(String userName) throws SQLException {
@@ -35,20 +55,12 @@ public class UserInfoDao extends Db {
 		stmt.close();
 	}
 
-	public void updatePassword(String userName, String password) throws SQLException {
-		// TODO: userinfo_update_password
-		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("userinfo_update_password"));
-		stmt.setString(1, userName);
-		stmt.setString(2, password);
-		stmt.executeUpdate();
-		stmt.close();
-	}
-	public void updateLocation(String userName, String location) throws SQLException {
-		// TODO: userinfo_update_location
-		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("userinfo_update_location"));
-		stmt.setString(1, userName);
-		stmt.setString(2, location);
-		stmt.executeUpdate();
-		stmt.close();
-	}
+//	public void updatePassword(String userName, String password) throws SQLException {
+//		// TODO: userinfo_update_password
+//		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("userinfo_update_password"));
+//		stmt.setString(1, userName);
+//		stmt.setString(2, password);
+//		stmt.executeUpdate();
+//		stmt.close();
+//	}
 }

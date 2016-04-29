@@ -6,17 +6,17 @@ import adapter.proxyUserAdapter;
 public class UserBizImp extends proxyUserAdapter implements UserBiz{
 
 	@Override
-	public boolean verifyUsername(String userName) {
+	public boolean verifyUsername(String userName) throws Exception {
      return proxyVerifyUserName(userName);
 	}
 	
 	@Override
-    public User login(User user){
+    public User login(User user) throws Exception {
 	 return proxyLogin(user);
     }
 	
 	@Override
-	public void signUp(User user){
+	public void signUp(User user) throws Exception {
 		proxySignUp(user);
 	}
 	

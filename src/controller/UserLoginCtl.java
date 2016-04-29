@@ -24,17 +24,21 @@ public class UserLoginCtl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User)request.getAttribute("user");
-		if(userbiz.login(user) != null){
-			/*
-			 * we need to figure out how backend talk to front end and forward some 
-			 * message here to front end
-			 */
-		
-		}else{
-			/*
-			 * we need to figure out how backend talk to front end and forward some 
-			 * message here to front end
-			 */	
+		try {
+			if(userbiz.login(user) != null){
+				/*
+				 * we need to figure out how backend talk to front end and forward some 
+				 * message here to front end
+				 */
+			
+			}else{
+				/*
+				 * we need to figure out how backend talk to front end and forward some 
+				 * message here to front end
+				 */	
+			}
+		} catch (Exception e) {
+			throw new IOException(e);
 		}
 	}
 
