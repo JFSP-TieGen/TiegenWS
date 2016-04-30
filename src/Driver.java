@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.catalina.core.ApplicationContext;
 import server.UserBiz;
 import server.UserBizImp;
 
@@ -22,6 +23,7 @@ import server.UserBizImp;
 public class Driver {
 
     public static void main(String[] args) throws IOException, InterruptedException, SQLException {
+
            User user = new User("kt", "password");
            UserBiz userbiz = new UserBizImp();
         try {

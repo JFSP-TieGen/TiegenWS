@@ -3,6 +3,7 @@ package db;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,11 +20,15 @@ public class Db {
 
 	public Db() {
 		try {
-			Connection c1 = null;
-
+			 //= null;
+                        InputStream is = getClass().getResourceAsStream("ddl.properties");
+   
 			String ddlFile = "ddl.properties";
 			Properties dbProps = new Properties();
-			dbProps.load(new FileReader(ddlFile));
+			dbProps.load(is);
+//			String ddlFile = "ddl.properties";
+//			Properties dbProps = new Properties();
+//			dbProps.load(new FileReader(ddlFile));
 
 			String url1 = dbProps.getProperty("jdbc_url");
 			String user = dbProps.getProperty("user_name");
@@ -34,13 +39,13 @@ public class Db {
                         Logger.getLogger(Db.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-			c1 = DriverManager.getConnection(url1, user, password);
-			if (c1 != null) {
+			connection = DriverManager.getConnection(url1, user, password);
+			if (connection != null) {
 				System.out.println("Connected to tiegen database");
 			}
 			System.out.println("Creating a table in the database...");
 
-			Statement stmt = c1.createStatement();
+			Statement stmt = connection.createStatement();
 			String sqlUserInfo = dbProps.getProperty("userinfo_ddl");
 			stmt.executeUpdate(sqlUserInfo);
 			stmt.close();
@@ -65,7 +70,7 @@ public class Db {
 //			stmt.executeUpdate(sqlBookMarks);
 //			stmt.close();
 
-			this.connection = c1;
+//			this.connection = c1;
 			this.dbProps = dbProps;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
