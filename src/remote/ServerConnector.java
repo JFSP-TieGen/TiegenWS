@@ -14,7 +14,7 @@ import java.net.URL;
 import util.Constants;
 
 public class ServerConnector{
-    public Object sendRequest(String urlS, User input){
+    public Object sendRequest(String urlS, Object input){
         HttpURLConnection urlConnection = null;
         try {
         URL url = new URL(urlS);
