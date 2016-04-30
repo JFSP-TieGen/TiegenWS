@@ -6,8 +6,13 @@
 
 
 import db.UserInfoDao;
+import entity.User;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import server.UserBiz;
+import server.UserBizImp;
 
 
 /**
@@ -17,7 +22,13 @@ import java.sql.SQLException;
 public class Driver {
 
     public static void main(String[] args) throws IOException, InterruptedException, SQLException {
-           new UserInfoDao().create("kt", "password");
+           User user = new User("kt", "password");
+           UserBiz userbiz = new UserBizImp();
+        try {
+            userbiz.signUp(user);
+        } catch (Exception ex) {
+            Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

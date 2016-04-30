@@ -1,5 +1,7 @@
 package controller;
 
+import com.sun.media.jfxmedia.logging.Logger;
+import db.Db;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import server.UserBiz;
 import util.InstanceFactory;
 import entity.User;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
 
 
 public class UserSignUpCtl extends HttpServlet {
@@ -16,7 +21,6 @@ public class UserSignUpCtl extends HttpServlet {
     // use instance factory to get the only instance of servicebizimp class
 	private UserBiz userbiz = InstanceFactory.getInstance()
 			    			.createInstance(UserBiz.class);
-	
     public UserSignUpCtl() {
         super();
     }
@@ -24,22 +28,30 @@ public class UserSignUpCtl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		//get the username and password from front end
-        User user = (User) request.getAttribute("user");
+            ObjectInputStream in = new ObjectInputStream(request.getInputStream());
 		//call the biz layer functions
+            User user = null ;
 		try {
-			if(userbiz.verifyUsername(user.getUserName())){
+                                user = (User) in.readObject();
+                                in.close();
+//                    if(userbiz.verifyUsername(user.getUserName())){
 				/*
 				 * we need to figure out how backend talk to front end and forward some 
 				 * message here to front end
 				 */
-			}else{
+//			}else{
 				userbiz.signUp(user);
+                                response.setContentType ("application/octet-stream");
+                                ObjectOutputStream out = new ObjectOutputStream(response.getOutputStream());
+                                out.writeObject(user);
+                                out.close ();
 				/*
 				 * we need to figure out how backend talk to front end and forward some 
 				 * message here to front end
 				 */
-			}
+//			}
 		} catch (Exception e) {
+                    if(user.getUserName().equals("g3"))
 			throw new IOException(e);
 		}
 		
