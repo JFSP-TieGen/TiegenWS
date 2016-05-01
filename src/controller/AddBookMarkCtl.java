@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import server.AddBookMark;
 import util.InstanceFactory;
 import entity.BookMark;
+import entity.User;
 
 
 public class AddBookMarkCtl extends HttpServlet {
@@ -30,8 +33,12 @@ public class AddBookMarkCtl extends HttpServlet {
 	 * message here to front end
 	*/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookMark bookmark = (BookMark) request.getAttribute("bookmark");
+		//BookMark bookmark = (BookMark) request.getAttribute("bookmark");
+		ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+		BookMark bookmark = null ;
 		try {
+			bookmark = (BookMark)in.readObject();
+			in.close();
 			servicebiz.addBookMark(bookmark);
 		} catch (Exception e) {
 			throw new IOException(e);

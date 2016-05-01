@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +31,12 @@ public class RateBookingCtl extends HttpServlet {
      * message here to front end
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	Rate rate = (Rate) request.getAttribute("rate");
+    	//Rate rate = (Rate) request.getAttribute("rate");
+    	ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+		Rate rate = null;
     	try {
+    		rate = (Rate)in.readObject();
+    		in.close();
     		servicebiz.rateBooking(rate);
     	} catch (Exception e) {
     		throw new IOException(e);

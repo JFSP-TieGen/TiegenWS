@@ -16,8 +16,8 @@ public class UserBizImp extends proxyUserAdapter implements UserBiz{
     }
 	
 	@Override
-	public void signUp(User user) throws Exception {
-		proxySignUp(user);
+	public User signUp(User user) throws Exception {
+		return proxySignUp(user);
 	}
 	
 }

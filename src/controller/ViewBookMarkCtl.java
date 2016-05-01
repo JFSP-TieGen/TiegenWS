@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -30,12 +32,20 @@ public class ViewBookMarkCtl extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       User user = (User) request.getAttribute("user");
-       try {
-		ArrayList<Service> result = servicebiz.loadBookMark(user);
-	} catch (Exception e) {
-		throw new IOException(e);
-	}
+      // User user = (User) request.getAttribute("user");
+		 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+		 User user = null;
+       try{
+    	 user = (User)in.readObject();
+    	 in.close();
+		 ArrayList<Service> result = servicebiz.loadBookMark(user);
+		 response.setContentType("application/octet-stream");
+		 ObjectOutputStream out = new ObjectOutputStream(response.getOutputStream());
+		 out.writeObject(result);
+		 out.close();
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
        /*
     	 * we need to figure out how backend talk to front end and forward some 
     	 * message here to front end

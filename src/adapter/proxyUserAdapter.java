@@ -4,7 +4,7 @@ import db.UserInfoDao;
 import entity.User;
 
 public abstract class proxyUserAdapter {
-
+    
 	/*
 	 * here we need a database query that return if the username is existed, if it is, 
 	 * the new user can't register with this name;
@@ -25,8 +25,10 @@ public abstract class proxyUserAdapter {
 	/*
 	 * put the new user in table
 	 */
-	public void proxySignUp(User user) throws Exception {
-		new UserInfoDao().create(user.getUserName(), user.getPassword());
+	public User proxySignUp(User user) throws Exception {
+		UserInfoDao dao = new UserInfoDao();
+		dao.create(user.getUserName(), user.getPassword());
+		return dao.loginUser(user.getUserName(), user.getPassword());
 	}
 
 	public void proxySignOut(){

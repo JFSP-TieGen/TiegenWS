@@ -1,10 +1,13 @@
 package controller;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import entity.Booking;
 import server.BookService;
 import util.InstanceFactory;
@@ -31,8 +34,12 @@ public class BookServiceCtl extends HttpServlet {
 	 * message here to front end
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	     Booking booking = (Booking) request.getAttribute("booking");
+	     //Booking booking = (Booking) request.getAttribute("booking");
+	     ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+	     Booking booking = null;
 		 try {
+			 booking = (Booking)in.readObject();
+			 in.close();
 			servicebiz.bookService(booking);
 		} catch (Exception e) {
 			throw new IOException(e);

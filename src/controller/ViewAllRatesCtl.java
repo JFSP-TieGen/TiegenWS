@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Rate;
 import server.RateBooking;
 import util.InstanceFactory;
 
@@ -24,9 +28,17 @@ public class ViewAllRatesCtl extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int serviceId = (Integer)request.getAttribute("serviceId");
+		//int serviceId = (Integer)request.getAttribute("serviceId");
+		 ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+		
 		try {
-			servicebiz.displayRates(serviceId);
+			int serviceId = (Integer)in.readObject();
+			in.close();
+			ArrayList<Rate> results = servicebiz.displayRates(serviceId);
+			response.setContentType("application/octet-stream");
+			ObjectOutputStream out = new ObjectOutputStream(response.getOutputStream());
+			out.writeObject(results);   
+			out.close();
 		} catch (Exception e) {
 			throw new IOException(e);
 		}

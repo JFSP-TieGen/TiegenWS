@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,8 +30,12 @@ public class CancelBookingCtl extends HttpServlet {
      * message here to front end
      */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    Booking booking = (Booking) request.getAttribute("booking");
+	    //Booking booking = (Booking) request.getAttribute("booking");
+		  ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+		  Booking booking = null;
 	    try {
+	    	booking = (Booking)in.readObject();
+	    	in.close();
 			servicebiz.cancelBooking(booking);
 		} catch (Exception e) {
 			throw new IOException(e);
