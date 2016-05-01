@@ -19,7 +19,7 @@ public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,Bo
 	}
 
 	@Override
-	public ArrayList<Rate> displayRates(int ServiceId) {
+	public ArrayList<Rate> displayRates(int ServiceId) throws Exception {
 		return proxyDisplayRates(ServiceId);
 	}
 

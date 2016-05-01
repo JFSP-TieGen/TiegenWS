@@ -100,11 +100,11 @@ public abstract class proxyServiceAdapter {
 		// GAYATRI : assuming all qInfo fields are SQL regex 
 		return new ServiceProviderInfoDao().getAllServicesQuery(qinfo.getServiceName(), qinfo.getLocation(), qinfo.getType());
 	}
-	
-	public ArrayList<Rate> proxyDisplayRates(int serviceId){
-		/*
-		 * get all rates of certain service from database
-		 */
-		return null;
+
+	/*
+	 * get all rates of certain service from database
+	 */
+	public ArrayList<Rate> proxyDisplayRates(int serviceId) throws Exception {
+		return new RatingDao().getRatings(serviceId);
 	}
 }
