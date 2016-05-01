@@ -51,7 +51,6 @@ public abstract class proxyServiceAdapter {
 	 * update the new average score in service table
 	 */
 	
-	
 	/*
 	 * get user id, booking id, rate & review from rate object and insert into database
 	 */
@@ -97,7 +96,8 @@ public abstract class proxyServiceAdapter {
 	 * get the attribute of qinfo(like type, name...) and query for result in database accordingly
 	 */
 	public ArrayList<Service> proxySearch(QueryInfo qinfo) throws Exception {
-		// GAYATRI : assuming all qInfo fields are SQL regex 
+		// GAYATRI : assuming all qInfo fields are SQL regex
+		// for eg, if serviceName == nul, the value pass should be '%%'
 		return new ServiceProviderInfoDao().getAllServicesQuery(qinfo.getServiceName(), qinfo.getLocation(), qinfo.getType());
 	}
 
