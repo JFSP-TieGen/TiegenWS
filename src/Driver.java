@@ -5,13 +5,11 @@
  */
 
 
-import db.UserInfoDao;
 import entity.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.catalina.core.ApplicationContext;
 import server.UserBiz;
 import server.UserBizImp;
 

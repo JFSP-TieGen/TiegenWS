@@ -50,22 +50,22 @@ public class Db {
 			stmt.executeUpdate(sqlUserInfo);
 			stmt.close();
 
-			stmt = c1.createStatement();
+			stmt = connection.createStatement();
 			String sqlSPInfo = dbProps.getProperty("serviceprovider_info_ddl");
 			stmt.executeUpdate(sqlSPInfo);
 			stmt.close();
 
-			stmt = c1.createStatement();
+			stmt = connection.createStatement();
 			String sqlBookings = dbProps.getProperty("bookings_ddl");
 			stmt.executeUpdate(sqlBookings);
 			stmt.close();
 			
-			stmt = c1.createStatement();
+			stmt = connection.createStatement();
 			String sqlRatings = dbProps.getProperty("ratings_ddl");
 			stmt.executeUpdate(sqlRatings);
 			stmt.close();
 			
-			stmt = c1.createStatement();
+			stmt = connection.createStatement();
 			String sqlBookMarks = dbProps.getProperty("bookmarks_ddl");
 			stmt.executeUpdate(sqlBookMarks);
 			stmt.close();
