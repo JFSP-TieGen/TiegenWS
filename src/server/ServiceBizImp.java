@@ -1,7 +1,6 @@
 package server;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import entity.BookMark;
 import entity.Booking;
@@ -25,7 +24,7 @@ public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,Bo
 	}
 
 	@Override
-	public ArrayList<Service> loadBookMark(User user) {
+	public ArrayList<Service> loadBookMark(User user) throws Exception {
 		return proxyLoadBookMark(user.getUserId());
 	}
 
@@ -40,23 +39,23 @@ public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,Bo
 	}
 
 	@Override
-	public void rateBooking(Rate rate) {
+	public void rateBooking(Rate rate) throws Exception{
 		proxyRateBooking(rate);
 	}
 
 	@Override
-	public void editRate(Rate rate) {
+	public void editRate(Rate rate) throws Exception {
 		proxyEditRate(rate);
 	}
 
 
 	@Override
-	public void cancelBooking(Booking booking) {
+	public void cancelBooking(Booking booking) throws Exception {
 		proxyCancelBooking(booking);
 	}
 
 	@Override
-	public ArrayList<Service> search(QueryInfo qinfo) {
+	public ArrayList<Service> search(QueryInfo qinfo) throws Exception {
 		return proxySearch(qinfo);
 	}
 

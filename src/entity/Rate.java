@@ -5,7 +5,7 @@ package entity;
 	private int rateId;
 	private int userId;
 	private int orderId;
-	private int rate;
+	private float rate;
 	private String review;
 	
 	
@@ -27,10 +27,10 @@ package entity;
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public int getRate() {
+	public float getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(float rate) {
 		this.rate = rate;
 	}
 	public String getReview() {

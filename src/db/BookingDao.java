@@ -16,6 +16,18 @@ public class BookingDao extends Db {
 		stmt.close();
 	}
 
+	public int getServiceId(int userId, int bookingId) throws SQLException {
+		// TODO: booking_get_serviceid
+		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_get_serviceid"));
+		stmt.setInt(1, userId);
+		stmt.setInt(2, bookingId);
+		ResultSet rs = stmt.executeQuery();
+		rs.next();
+		int autoId = rs.getInt(1);
+		stmt.close();
+		return autoId;
+	}
+
 	public int getBookingId(int userId, int serviceProviderId) throws SQLException {
 		// TODO: booking_get_id
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_get_id"));

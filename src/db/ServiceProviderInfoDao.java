@@ -3,6 +3,9 @@ package db;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import entity.Service;
 
 public class ServiceProviderInfoDao extends Db {
 
@@ -12,7 +15,8 @@ public class ServiceProviderInfoDao extends Db {
 		stmt.setString(1, serviceProviderName);
 		stmt.setString(2, serviceProviderType);
 		stmt.setString(3, serviceProviderLocation);
-		stmt.setString(3, serviceProviderWebsite);
+		stmt.setString(4, serviceProviderWebsite);
+		stmt.setFloat(5, 0.0f);
 		stmt.executeUpdate();
 		stmt.close();
 	}
@@ -22,10 +26,30 @@ public class ServiceProviderInfoDao extends Db {
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("spinfo_get_id"));
 		stmt.setString(1, serviceProviderName);
 		ResultSet rs = stmt.executeQuery();
-		rs.next();
-		int autoId = rs.getInt(1);
+		boolean exists = rs.next();
+		int serviceId = -1;
+		if (exists) {
+			serviceId = rs.getInt(1);
+		}
 		stmt.close();
-		return autoId;
+		return serviceId;
+	}
+
+	public ArrayList<Service> getAllServicesQuery(String nameRegex, String locationRegex, String typeRegex) throws SQLException {
+		// TODO: spinfo_get_query
+		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("spinfo_get_query"));
+		ArrayList<Service> services = new ArrayList<Service>();
+		stmt.setString(1, nameRegex);
+		stmt.setString(2, locationRegex);
+		stmt.setString(3, typeRegex);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			Service service = new Service(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getFloat(6));
+			service.setServiceId(rs.getInt(1));
+			services.add(service);
+		}
+		stmt.close();
+		return services;
 	}
 
 	public void delete(String serviceProviderName) throws SQLException {
@@ -45,6 +69,15 @@ public class ServiceProviderInfoDao extends Db {
 		stmt.close();
 	}
 
+	public void updateRating(int serviceId, float rating) throws SQLException {
+		// TODO: spinfo_update_rating
+		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("spinfo_update_rating"));
+		stmt.setFloat(1, rating);
+		stmt.setInt(2, serviceId);
+		stmt.executeUpdate();
+		stmt.close();
+	}
+	
 	public void updateLocation(String serviceProviderName, String location) throws SQLException {
 		// TODO: spinfo_update_location
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("spinfo_update_location"));
