@@ -25,7 +25,11 @@ public class ViewAllRatesCtl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int serviceId = (Integer)request.getAttribute("serviceId");
-		servicebiz.displayRates(serviceId);
+		try {
+			servicebiz.displayRates(serviceId);
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
 		  /*
 	   	 * we need to figure out how backend talk to front end and forward some 
 	   	 * message here to front end

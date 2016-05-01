@@ -30,12 +30,12 @@ public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,Bo
 	}
 
 	@Override
-	public void deleteBookMark(BookMark bookmark) {
+	public void deleteBookMark(BookMark bookmark) throws Exception{
 		proxyDeleteBookMark(bookmark);
 	}
 	
 	@Override
-	public void bookService(Booking booking){
+	public void bookService(Booking booking) throws Exception{
 		proxyBookService(booking);
 	}
 
@@ -61,7 +61,7 @@ public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,Bo
 	}
 
 	@Override
-	public void addBookMark(BookMark bookmark) {
+	public void addBookMark(BookMark bookmark) throws Exception{
 		proxyAddBookMark(bookmark);
 	}
 

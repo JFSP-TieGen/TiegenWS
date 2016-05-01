@@ -14,10 +14,11 @@ public class BookmarkDao extends Db {
 		stmt.close();
 	}
 
-	public void delete(int bookmarkId) throws SQLException {
+	public void delete(int userId, int serviceId) throws SQLException {
 		// TODO: bookmark_delete
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("bookmark_delete"));
-		stmt.setInt(1, bookmarkId);
+		stmt.setInt(1, userId);
+		stmt.setInt(2, serviceId);
 		stmt.executeUpdate();
 		stmt.close();
 	}

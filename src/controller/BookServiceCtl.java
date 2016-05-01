@@ -26,13 +26,17 @@ public class BookServiceCtl extends HttpServlet {
    
     }
 
+	/*
+	 * we need to figure out how backend talk to front end and forward some 
+	 * message here to front end
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	     Booking booking = (Booking) request.getAttribute("booking");
-		 servicebiz.bookService(booking);
-		/*
-		 * we need to figure out how backend talk to front end and forward some 
-		 * message here to front end
-		 */
+		 try {
+			servicebiz.bookService(booking);
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

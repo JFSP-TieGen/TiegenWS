@@ -11,20 +11,25 @@ import entity.Rate;
 import entity.Service;
 import entity.User;
 
+import db.BookingDao;
+import db.BookmarkDao;
+
 public abstract class proxyServiceAdapter {
 	
 	//book service 
-	public void proxyBookService(Booking booking){
-		/*
-		 * insert this booking record in database
-		 */
-		
+	/*
+	 * insert this booking record in database
+	 */
+	public void proxyBookService(Booking booking) throws Exception{
+
+		new BookingDao().create(booking.getUserId(), booking.getServiceId(), booking.getDate());
 	}
 	
-	public void proxyAddBookMark(BookMark bookmark){
-		/*
-		 * get user id and service id from bookmark object and insert into database
-		 */
+	/*
+	 * get user id and service id from bookmark object and insert into database
+	 */
+	public void proxyAddBookMark(BookMark bookmark) throws Exception{
+		new BookmarkDao().create(bookmark.getUserId(), bookmark.getServiceId());
 		
 	}
 	
@@ -80,10 +85,11 @@ public abstract class proxyServiceAdapter {
 	
 	}
 	
-	public void proxyDeleteBookMark(BookMark bookmark){
+	public void proxyDeleteBookMark(BookMark bookmark) throws Exception{
 		/*
 		 * get user id and service id from bookmark object and insert into database
 		 */
+		new BookmarkDao().delete(bookmark.getUserId(), bookmark.getServiceId());
 	}
 	
 	public ArrayList<Service> proxySearch(QueryInfo qinfo){

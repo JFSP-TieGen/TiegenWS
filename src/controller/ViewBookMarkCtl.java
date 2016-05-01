@@ -31,7 +31,11 @@ public class ViewBookMarkCtl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        User user = (User) request.getAttribute("user");
-       ArrayList<Service> result = servicebiz.loadBookMark(user);
+       try {
+		ArrayList<Service> result = servicebiz.loadBookMark(user);
+	} catch (Exception e) {
+		throw new IOException(e);
+	}
        /*
     	 * we need to figure out how backend talk to front end and forward some 
     	 * message here to front end

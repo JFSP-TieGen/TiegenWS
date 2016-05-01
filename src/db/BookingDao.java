@@ -6,15 +6,12 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class BookingDao extends Db {
-	public void create(int userId, int serviceProviderId, Date dateOfBooking, Date dateOfService, String frequency, Date endDateOfService) throws SQLException {
+	public void create(int userId, int serviceProviderId, Date date) throws SQLException {
 		// TODO: booking_insert
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_insert"));
 		stmt.setInt(1, userId);
 		stmt.setInt(2, serviceProviderId);
-		stmt.setDate(3, new java.sql.Date(dateOfBooking.getTime()));
-		stmt.setDate(4, new java.sql.Date(dateOfService.getTime()));
-		stmt.setString(5, frequency);
-		stmt.setDate(6, new java.sql.Date(endDateOfService.getTime()));
+		stmt.setDate(3, new java.sql.Date(date.getTime()));
 		stmt.executeUpdate();
 		stmt.close();
 	}

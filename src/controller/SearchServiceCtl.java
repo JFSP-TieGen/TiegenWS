@@ -26,7 +26,11 @@ public class SearchServiceCtl extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 QueryInfo info = (QueryInfo) request.getAttribute("qinfo");
-		 ArrayList<Service> result = servicebiz.search(info);
+		 try {
+			ArrayList<Service> result = servicebiz.search(info);
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
 			/*
 			 * we need to figure out how backend talk to front end and forward some 
 			 * message here to front end

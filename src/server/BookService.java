@@ -9,8 +9,8 @@ import entity.User;
 
 public interface BookService {
 	
-	public void bookService(Booking booking);
-	public void cancelBooking(Booking booking);
-	public ArrayList<Service> search(QueryInfo info);
+	public void bookService(Booking booking) throws Exception;
+	public void cancelBooking(Booking booking) throws Exception;
+	public ArrayList<Service> search(QueryInfo info) throws Exception;
 	
 }
