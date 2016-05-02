@@ -3,54 +3,54 @@
   
   <servlet>
     <servlet-name>signUp</servlet-name>
-    <servlet-class>controller.UserSignUpCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.UserSignUpCtl</servlet-class>
   </servlet>
   
    <servlet>
     <servlet-name>Login</servlet-name>
-    <servlet-class>controller.UserLoginCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.UserLoginCtl</servlet-class>
   </servlet>
   
    <servlet>
     <servlet-name>AddBookMark</servlet-name>
-    <servlet-class>controller.AddBookMarkCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.AddBookMarkCtl</servlet-class>
   </servlet>
   
   <servlet>
     <servlet-name>BookService</servlet-name>
-    <servlet-class>controller.BookServiceCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.BookServiceCtl</servlet-class>
   </servlet>
   
    <servlet>
     <servlet-name>CancelBooking</servlet-name>
-    <servlet-class>controller.CancelBookingCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.CancelBookingCtl</servlet-class>
   </servlet>
   
    <servlet>
     <servlet-name>EditRate</servlet-name>
-    <servlet-class>controller.EditRateCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.EditRateCtl</servlet-class>
   </servlet>
   
    <servlet>
     <servlet-name>RateBooking</servlet-name>
-    <servlet-class>controller.RateBookingCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.RateBookingCtl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>SearchService</servlet-name>
-    <servlet-class>controller.SearchServiceCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.SearchServiceCtl</servlet-class>
   </servlet>
   
   <servlet>
     <servlet-name>ViewAllRates</servlet-name>
-    <servlet-class>controller.ViewAllRatesCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.ViewAllRatesCtl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ViewBookMarks</servlet-name>
-    <servlet-class>controller.ViewBookMarkCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.ViewBookMarkCtl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ViewCalendarDay</servlet-name>
-    <servlet-class>controller.ViewCalendarDayCtl</servlet-class>
+    <servlet-class>com.cmu.tiegen.controller.ViewCalendarDayCtl</servlet-class>
   </servlet>
   
   
