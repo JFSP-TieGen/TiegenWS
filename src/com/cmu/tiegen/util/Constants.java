@@ -3,7 +3,7 @@ package com.cmu.tiegen.util;
 public class Constants {
 
     //Links fir settings screen
-    public static final String URL="http://localhost:8080/version2";
+    public static final String URL="http://localhost:8080/TiegenWS";
     public static final String URL_LOGIN = "/client/login";
     public static final String URL_SIGN_UP = "/client/signUp";
     public static final String URL_ADD_BOOKMARK = "/client/addBookmark";
