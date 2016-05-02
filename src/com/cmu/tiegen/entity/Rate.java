@@ -2,6 +2,8 @@ package com.cmu.tiegen.entity;
 
 //rate of a booking
  public class Rate {
+     	private static final long serialVersionUID = 6529685098267757690L;
+
 	private int rateId;
 	private int userId;
 	private int orderId;

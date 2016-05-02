@@ -2,6 +2,8 @@ package com.cmu.tiegen.entity;
 
 //used when display services in different types and searh for services
 public class QueryInfo {
+    	private static final long serialVersionUID = 6529685098267757690L;
+
 	String serviceName;
 	String location;
 	String type;

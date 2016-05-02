@@ -4,6 +4,8 @@ import java.util.Date;
 
 //a booked service
 public class Booking {	
+    	private static final long serialVersionUID = 6529685098267757690L;
+
 	private int orderId;
 	private int userId;
 	private int serviceId;
