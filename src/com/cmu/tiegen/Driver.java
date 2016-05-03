@@ -27,7 +27,9 @@ public class Driver {
            User user = new User("kt", "password");
            UserBiz userbiz = new UserBizImp();
         try {
-            userbiz.signUp(user);
+           if(userbiz.verifyUsername(user.getUserName())){
+        	   userbiz.signUp(user);
+           }
         } catch (Exception ex) {
             Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
         }

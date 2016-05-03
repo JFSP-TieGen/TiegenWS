@@ -28,7 +28,19 @@ public class BookmarkDao extends Db {
 		stmt.executeUpdate();
 		stmt.close();
 	}
-	
+    public int getBookMarkId(int userId, int serviceId) throws SQLException{
+    	PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("bookmark_get_id"));
+		stmt.setInt(1, userId);
+		stmt.setInt(2, serviceId);
+		ResultSet rs = stmt.executeQuery();
+		boolean exists = rs.next();
+		int bookmarkId = -1;
+		if (exists) {
+			bookmarkId = rs.getInt(1);
+		}
+		stmt.close();
+		return bookmarkId;
+    }
 	public ArrayList<Service> getAllBookmarkedServices(int userId) throws SQLException {
 		// TODO: bookmark_get_all_services
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("bookmark_get_all_services"));
@@ -41,6 +53,7 @@ public class BookmarkDao extends Db {
 			services.add(service);
 		}
 		stmt.close();
+		System.out.print("backend"+services.size());
 		return services;
 	}
 

@@ -33,7 +33,7 @@ public class AddBookMarkCtl extends HttpServlet {
 	 * message here to front end
 	*/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//BookMark bookmark = (BookMark) request.getAttribute("bookmark");
+		
 		ObjectInputStream in = new ObjectInputStream(request.getInputStream());
 		BookMark bookmark = null ;
 		try {

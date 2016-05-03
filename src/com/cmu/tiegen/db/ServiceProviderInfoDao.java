@@ -39,9 +39,11 @@ public class ServiceProviderInfoDao extends Db {
 		// TODO: spinfo_get_query
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("spinfo_get_query"));
 		ArrayList<Service> services = new ArrayList<Service>();
+		
 		stmt.setString(1, nameRegex);
 		stmt.setString(2, locationRegex);
 		stmt.setString(3, typeRegex);
+		System.out.print(stmt.toString());
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			Service service = new Service(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getFloat(6));

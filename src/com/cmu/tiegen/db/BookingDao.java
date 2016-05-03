@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+
 public class BookingDao extends Db {
 	public void create(int userId, int serviceProviderId, Date date) throws SQLException {
 		// TODO: booking_insert
@@ -15,7 +16,20 @@ public class BookingDao extends Db {
 		stmt.executeUpdate();
 		stmt.close();
 	}
-
+    public int getBookingId(int uid,Date date,int sid) throws SQLException{
+    	PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_get_bookingid"));
+		stmt.setInt(1, uid);
+		stmt.setDate(2,new java.sql.Date(date.getTime()));
+		stmt.setInt(3, sid);
+		ResultSet rs = stmt.executeQuery();
+		boolean exists = rs.next();
+		int id = -1;
+		if (exists) {
+			id = rs.getInt(1);
+		}
+		stmt.close();
+		return id;
+    }
 	public int getServiceId(int userId, int bookingId) throws SQLException {
 		// TODO: booking_get_serviceid
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_get_serviceid"));

@@ -22,16 +22,21 @@ public abstract class proxyServiceAdapter {
 	 * insert this booking record in database
 	 */
 	public void proxyBookService(Booking booking) throws Exception{
-
-		new BookingDao().create(booking.getUserId(), booking.getServiceId(), booking.getDate());
+        BookingDao bookingdao = new BookingDao();
+        if(bookingdao.getBookingId(booking.getUserId(),booking.getDate(),booking.getServiceId())<0){
+        	new BookingDao().create(booking.getUserId(), booking.getServiceId(), booking.getDate());
+        }
+		
 	}
 	
 	/*
 	 * get user id and service id from bookmark object and insert into database
 	 */
 	public void proxyAddBookMark(BookMark bookmark) throws Exception{
-		new BookmarkDao().create(bookmark.getUserId(), bookmark.getServiceId());
-		
+		BookmarkDao bookmarkDao = new BookmarkDao();
+		if(bookmarkDao.getBookMarkId(bookmark.getUserId(),bookmark.getServiceId())<0){
+	    bookmarkDao.create(bookmark.getUserId(), bookmark.getServiceId());
+		}
 	}
 	
 	public CalendarDay proxyLoadCalendarDay(CalendarDay day){
@@ -59,12 +64,12 @@ public abstract class proxyServiceAdapter {
 		 */
 	
 		float score = rate.getRate();
-		int serviceId = new BookingDao().getServiceId(rate.getRateId(), rate.getOrderId());
+		int serviceId = new BookingDao().getServiceId(rate.getUserId(), rate.getOrderId());
 		int countRating = new RatingDao().countRating(serviceId);
 		float avgRating = new RatingDao().avgRating(serviceId);
 		float newAvg = (float)(((float)(countRating * avgRating) + score)/ countRating + 1);
-		new ServiceProviderInfoDao().updateRating(rate.getOrderId(), newAvg);
-		new RatingDao().create(rate.getRateId(), serviceId, rate.getOrderId(), rate.getRate(), "Some Review");
+		new ServiceProviderInfoDao().updateRating(serviceId, newAvg);
+		new RatingDao().create(rate.getUserId(), serviceId, rate.getOrderId(), rate.getRate(), rate.getReview());
 	}
 	
 	public ArrayList<Service> proxyLoadBookMark(int userId) throws Exception{

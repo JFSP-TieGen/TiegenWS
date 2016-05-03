@@ -25,13 +25,19 @@ public class UserSignUpCtl extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 		// get the username and password from front end
+		System.out.println("test request: "+request);
 		ObjectInputStream in = new ObjectInputStream(request.getInputStream());
 		// call the biz layer functions
 		User user = null;
 		try {
+			
 			user = (User) in.readObject();
+			
 			in.close();
-			if (userbiz.verifyUsername(user.getUserName())) {
+			//ObjectOutputStream out = new ObjectOutputStream(
+				//	response.getOutputStream());
+			if (!userbiz.verifyUsername(user.getUserName())) {
+//				System.out.print("signup controller username exist!");
 				response.setContentType("application/octet-stream");
 				ObjectOutputStream out = new ObjectOutputStream(
 						response.getOutputStream());
