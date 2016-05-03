@@ -35,6 +35,15 @@ public class SearchServiceCtl extends HttpServlet {
 		 try {
 			 info = (QueryInfo)in.readObject();
 			 in.close();
+			 if(info.getServiceName()==null){
+				 info.setServiceName("%%");
+			 }
+			 if(info.getLocation()==null){
+				 info.setLocation("%%");
+			 }
+			 if(info.getType()==null){
+				 info.setType("%%");
+			 }
 			 ArrayList<Service> result = servicebiz.search(info);
 			 response.setContentType("application/octet-stream");
 			 ObjectOutputStream out = new ObjectOutputStream(response.getOutputStream());
