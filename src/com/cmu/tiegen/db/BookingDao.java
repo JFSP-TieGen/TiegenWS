@@ -28,18 +28,6 @@ public class BookingDao extends Db {
 		return autoId;
 	}
 
-	public int getBookingId(int userId, int serviceProviderId) throws SQLException {
-		// TODO: booking_get_id
-		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_get_id"));
-		stmt.setInt(1, userId);
-		stmt.setInt(2, serviceProviderId);
-		ResultSet rs = stmt.executeQuery();
-		rs.next();
-		int autoId = rs.getInt(1);
-		stmt.close();
-		return autoId;
-	}
-
 	public void delete(int bookingId) throws SQLException {
 		// TODO: booking_delete
 		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_delete"));

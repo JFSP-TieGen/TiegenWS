@@ -31,7 +31,7 @@ public class BookmarkDao extends Db {
 	
 	public ArrayList<Service> getAllBookmarkedServices(int userId) throws SQLException {
 		// TODO: bookmark_get_all_services
-		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("bookmark_get_all"));
+		PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("bookmark_get_all_services"));
 		ArrayList<Service> services = new ArrayList<Service>();
 		stmt.setInt(1, userId);
 		ResultSet rs = stmt.executeQuery();

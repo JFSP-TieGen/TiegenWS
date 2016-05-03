@@ -50,27 +50,25 @@ public class Db {
 			stmt.executeUpdate(sqlUserInfo);
 			stmt.close();
 
-//			stmt = connection.createStatement();
-//			String sqlSPInfo = dbProps.getProperty("serviceprovider_info_ddl");
-//			stmt.executeUpdate(sqlSPInfo);
-//			stmt.close();
-//
-//			stmt = connection.createStatement();
-//			String sqlBookings = dbProps.getProperty("bookings_ddl");
-//			stmt.executeUpdate(sqlBookings);
-//			stmt.close();
-//			
-//			stmt = connection.createStatement();
-//			String sqlRatings = dbProps.getProperty("ratings_ddl");
-//			stmt.executeUpdate(sqlRatings);
-//			stmt.close();
-//			
-//			stmt = connection.createStatement();
-//			String sqlBookMarks = dbProps.getProperty("bookmarks_ddl");
-//			stmt.executeUpdate(sqlBookMarks);
-//			stmt.close();
+			stmt = connection.createStatement();
+			String sqlSPInfo = dbProps.getProperty("serviceprovider_info_ddl");
+			stmt.executeUpdate(sqlSPInfo);
+			stmt.close();
 
-//			this.connection = c1;
+			stmt = connection.createStatement();
+			String sqlBookings = dbProps.getProperty("bookings_ddl");
+			stmt.executeUpdate(sqlBookings);
+			stmt.close();
+			
+			stmt = connection.createStatement();
+			String sqlRatings = dbProps.getProperty("ratings_ddl");
+			stmt.executeUpdate(sqlRatings);
+			stmt.close();
+			
+			stmt = connection.createStatement();
+			String sqlBookMarks = dbProps.getProperty("bookmarks_ddl");
+			stmt.executeUpdate(sqlBookMarks);
+			stmt.close();
 			this.dbProps = dbProps;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
