@@ -52,7 +52,7 @@ public class ServerConnector {
 		/*
 		 * test case 1:User sign up
 		 */
-		User user = new User("g7", "pwd");
+		User user = new User("kt", "password");
 		User userSignUp = (User) conn.sendRequest(
 				Constants.URL.concat(Constants.URL_SIGN_UP), user);
 		if (userSignUp != null) {
@@ -73,7 +73,7 @@ public class ServerConnector {
 		/*
 		 * test case 3:Add Bookmark
 		 */
-		BookMark bookmark = new BookMark(userLogin.getUserId(), 1);
+		BookMark bookmark = new BookMark(1, 1);
 		conn.sendRequest(Constants.URL.concat(Constants.URL_ADD_BOOKMARK),
 				bookmark);
 
@@ -146,9 +146,9 @@ public class ServerConnector {
 		 * if some attributes are null, failed to return any result, maybe need to modify the sql statement?
 		 */
 		   QueryInfo info = new QueryInfo();
-		   info.setServiceName("ser1");
-		   info.setLocation("home");
-		   info.setType("1q");
+		   info.setServiceName("%x%");
+		   info.setLocation("%%");
+		   info.setType("%%");
 		   ArrayList<Service> res =  (ArrayList<Service>) conn.sendRequest(Constants.URL.concat(Constants.URL_SEARCH_SERVICE),info);
 		   System.out.print("total records for query is:"+res.size());
 	}
