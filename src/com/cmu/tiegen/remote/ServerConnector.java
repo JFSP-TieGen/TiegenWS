@@ -77,7 +77,7 @@ public class ServerConnector {
 		conn.sendRequest(Constants.URL.concat(Constants.URL_ADD_BOOKMARK),
 				bookmark);
 
-		/***********************problem here!!! 
+		/*********************** 
 		 * test case 4:Load all Bookmarks For Gayatri: when try
 		 * to get all bookmarks for user whose userid = 1, please help check the
 		 * db code
@@ -104,10 +104,11 @@ public class ServerConnector {
 				booking);
 
 		
-		/***********************problem here!!! 
+		/*********************** 
 		 * test case 7:display calendarday****** db function
 		 * need to be implemented
 		 */
+		// DONE
 		// Backend function need to be implemented
 
 		
@@ -119,32 +120,33 @@ public class ServerConnector {
 		conn.sendRequest(Constants.URL.concat(Constants.URL_CANCEL_BOOKING),
 				booking);
 
-		/************************ problem here!! 
+		/************************
 		 * test case 9:rate booking & edit rate db function not
 		 * completed, keep throwing bugs when update rate and insert new rate
 		 * error msg: Unknown column 'rate' in 'field list'
 		 */
-		// Rate rate = new Rate(1,1,3,"hello");
-		// conn.sendRequest(Constants.URL.concat(Constants.URL_RATE_BOOKING),rate);
+		 Rate rate = new Rate(1,1,3,"hello");
+		 conn.sendRequest(Constants.URL.concat(Constants.URL_RATE_BOOKING),rate);
 
 		
 		
-		/*************************problem here!!
+		/*************************
 		 *  test case 10: view all Rates same error msg with above
 		 * case, maybe some bug with the Rate table?
 		 */
-		// int sid = 1;
-		// ArrayList<Rate> rates = (ArrayList<Rate>)
-		// conn.sendRequest(Constants.URL.concat(Constants.URL_SHOW_ALL_RATES),new
-		// Integer(sid));
-		// System.out.print(rates);
+		 int sid = 1;
+		 ArrayList<Rate> rates = (ArrayList<Rate>)
+		 conn.sendRequest(Constants.URL.concat(Constants.URL_SHOW_ALL_RATES),new
+		 Integer(sid));
+		 System.out.print(rates);
 
-		/**************************problem here!!
+		/**************************
 		 * test case 11: search service
 		 * 
 		 * search function works only when all the query attributes are filled, 
 		 * if some attributes are null, failed to return any result, maybe need to modify the sql statement?
 		 */
+		 //Gayatri: Add '%%' when attributes are null
 		   QueryInfo info = new QueryInfo();
 		   info.setServiceName("%x%");
 		   info.setLocation("%%");

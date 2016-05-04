@@ -11,4 +11,24 @@ public class CalendarDay implements Serializable{
 	int userId;
 	Date date;
 	ArrayList<Booking> orders;
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public ArrayList<Booking> getOrders() {
+		return orders;
+	}
+	public void setOrders(ArrayList<Booking> orders) {
+		this.orders = orders;
+	}
+
+	
 }

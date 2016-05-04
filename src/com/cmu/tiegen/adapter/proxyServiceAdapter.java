@@ -39,12 +39,14 @@ public abstract class proxyServiceAdapter {
 		}
 	}
 	
-	public CalendarDay proxyLoadCalendarDay(CalendarDay day){
+	public CalendarDay proxyLoadCalendarDay(CalendarDay day) throws Exception {
 		/*
 		 * get the user id and date attribute from the calendarDay object and put all the bookings that match the criteria into an arraylist
 		 *  and encapsulate this arraylist in an calendarday object
 		 */
-		return null;
+		ArrayList<Booking> allBookingsByDate = new BookingDao().getAllBookingsByDate(day.getUserId(), day.getDate());
+		day.setOrders(allBookingsByDate);
+		return day;
 	}
 	
 	/*

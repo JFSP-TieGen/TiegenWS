@@ -14,7 +14,7 @@ import com.cmu.tiegen.adapter.proxyServiceAdapter;
 public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,BookService,RateBooking,ViewCalendar{
 
 	@Override
-	public CalendarDay LoadCalendarDay(CalendarDay day) {
+	public CalendarDay LoadCalendarDay(CalendarDay day) throws Exception {
 		return proxyLoadCalendarDay(day);
 	}
 
