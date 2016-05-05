@@ -125,7 +125,7 @@ public class ServerConnector {
 		 * completed, keep throwing bugs when update rate and insert new rate
 		 * error msg: Unknown column 'rate' in 'field list'
 		 */
-		 Rate rate = new Rate(1,1,3,"hello");
+		 Rate rate = new Rate(1,2,3,"hello");
 		 conn.sendRequest(Constants.URL.concat(Constants.URL_RATE_BOOKING),rate);
 
 		

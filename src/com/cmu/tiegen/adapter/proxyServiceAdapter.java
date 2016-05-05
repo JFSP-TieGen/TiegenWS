@@ -65,13 +65,18 @@ public abstract class proxyServiceAdapter {
 		 * we need to go to database and fetch the average rate of this service and update it 
 		 */
 	
-		float score = rate.getRate();
-		int serviceId = new BookingDao().getServiceId(rate.getUserId(), rate.getOrderId());
-		int countRating = new RatingDao().countRating(serviceId);
-		float avgRating = new RatingDao().avgRating(serviceId);
-		float newAvg = (float)(((float)(countRating * avgRating) + score)/ countRating + 1);
-		new ServiceProviderInfoDao().updateRating(serviceId, newAvg);
-		new RatingDao().create(rate.getUserId(), serviceId, rate.getOrderId(), rate.getRate(), rate.getReview());
+		try {
+			float score = rate.getRate();
+			int serviceId = new BookingDao().getServiceId(rate.getUserId(), rate.getOrderId());
+			int countRating = new RatingDao().countRating(serviceId);
+			float avgRating = new RatingDao().avgRating(serviceId);
+			float newAvg = (float)(((float)(countRating * avgRating) + score)/ countRating + 1);
+			new ServiceProviderInfoDao().updateRating(serviceId, newAvg);
+			new RatingDao().create(rate.getUserId(), serviceId, rate.getOrderId(), rate.getRate(), rate.getReview());			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 	
 	public ArrayList<Service> proxyLoadBookMark(int userId) throws Exception{

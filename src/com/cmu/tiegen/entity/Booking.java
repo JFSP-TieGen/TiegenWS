@@ -10,6 +10,7 @@ public class Booking implements Serializable{
 	private int orderId;
 	private int userId;
 	private int serviceId;
+	private String serviceName;
 	private Date date;
 	private Rate rate;
 	
@@ -48,6 +49,14 @@ public class Booking implements Serializable{
 	}
 	public void setRate(Rate rate) {
 		this.rate = rate;
+	}
+
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 	
 	

@@ -44,6 +44,7 @@ public class BookingDao extends Db {
 		while (rs.next()) {
 			Booking booking = new Booking(uid, rs.getInt(2), rs.getDate(3));
 			booking.setOrderId(rs.getInt(1));
+			booking.setServiceName(rs.getString(4));
 			retList.add(booking);
 		}
 		stmt.close();
