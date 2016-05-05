@@ -51,7 +51,7 @@ public class Driver {
 
            user.setUserId(1);
            ArrayList<Service> loadBookMark = serviceBizImp.loadBookMark(user);
-           System.out.println("BookMark: " + loadBookMark.size() + ", " + loadBookMark.get(0).getServiceId());
+           System.out.println("  BookMark: " + loadBookMark.size() + ", " + loadBookMark.get(0).getServiceId()+ ", " + loadBookMark.get(0).getPrice());
            
         try {
            if(userbiz.verifyUsername(user.getUserName())){

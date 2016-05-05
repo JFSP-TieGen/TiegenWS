@@ -46,7 +46,7 @@ public class ServiceProviderInfoDao extends Db {
 		System.out.print(stmt.toString());
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
-			Service service = new Service(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getFloat(6));
+			Service service = new Service(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getFloat(6), rs.getFloat(7));
 			service.setServiceId(rs.getInt(1));
 			services.add(service);
 		}
