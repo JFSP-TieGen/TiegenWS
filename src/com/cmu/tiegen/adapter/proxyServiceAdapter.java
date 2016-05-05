@@ -24,7 +24,7 @@ public abstract class proxyServiceAdapter {
 	public void proxyBookService(Booking booking) throws Exception{
         BookingDao bookingdao = new BookingDao();
         if(bookingdao.getBookingId(booking.getUserId(),booking.getDate(),booking.getServiceId())<0){
-        	new BookingDao().create(booking.getUserId(), booking.getServiceId(), booking.getDate());
+        	new BookingDao().create(booking.getUserId(), booking.getServiceId(), booking.getDate(), booking.getTime());
         }
 		
 	}
