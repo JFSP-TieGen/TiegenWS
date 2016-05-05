@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import com.cmu.tiegen.entity.Booking;
 import com.cmu.tiegen.entity.CalendarDay;
+import com.cmu.tiegen.entity.QueryInfo;
 import com.cmu.tiegen.entity.Rate;
 import com.cmu.tiegen.entity.Service;
 
@@ -38,9 +39,19 @@ public class Driver {
            UserBiz userbiz = new UserBizImp();
 
            ServiceBizImp serviceBizImp = new ServiceBizImp();
-           ArrayList<Rate> displayRates = serviceBizImp.displayRates(1);
+            QueryInfo info = new QueryInfo();
+		   info.setServiceName("%%");
+		   info.setLocation("%%");
+		   info.setType("%%");
+           ArrayList<Service> result=serviceBizImp.search(info);
+           
+           
+           
+          
+           Rate rate = new Rate(32, 6, 4, "hello");
+           serviceBizImp.rateBooking(rate);
+            ArrayList<Rate> displayRates = serviceBizImp.displayRates(1);
            System.out.println("Rate 1: " + displayRates.size() + ", " + displayRates.get(0).getRate());
-           Rate rate = displayRates.get(0);
            rate.setRate(4.5f);
            serviceBizImp.rateBooking(rate);
            displayRates = serviceBizImp.displayRates(1);

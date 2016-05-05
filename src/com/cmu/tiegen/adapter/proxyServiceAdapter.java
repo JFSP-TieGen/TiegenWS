@@ -49,6 +49,14 @@ public abstract class proxyServiceAdapter {
 		return day;
 	}
 	
+        public ArrayList<Booking> proxyGetToRate(CalendarDay day) throws Exception {
+		/*
+		 * get the user id and date attribute from the calendarDay object and put all the bookings that match the criteria into an arraylist
+		 *  and encapsulate this arraylist in an calendarday object
+		 */
+		ArrayList<Booking> allBookingsToRate = new BookingDao().getAllBookingsToRate(day.getUserId(), day.getDate());
+		return allBookingsToRate;
+	}
 	/*
 	 * int average = get the average rate of this service( service table should have a column that track the average rate of the service)
 	 * int num = number of rates associated with this service ( rate table)
@@ -70,7 +78,7 @@ public abstract class proxyServiceAdapter {
 			int serviceId = new BookingDao().getServiceId(rate.getUserId(), rate.getOrderId());
 			int countRating = new RatingDao().countRating(serviceId);
 			float avgRating = new RatingDao().avgRating(serviceId);
-			float newAvg = (float)(((float)(countRating * avgRating) + score)/ countRating + 1);
+			float newAvg = (float)(((float)(countRating * avgRating) + score)/ (countRating + 1));
 			new ServiceProviderInfoDao().updateRating(serviceId, newAvg);
 			new RatingDao().create(rate.getUserId(), serviceId, rate.getOrderId(), rate.getRate(), rate.getReview());			
 		} catch (Exception e) {

@@ -17,6 +17,11 @@ public class ServiceBizImp extends proxyServiceAdapter implements AddBookMark,Bo
 	public CalendarDay LoadCalendarDay(CalendarDay day) throws Exception {
 		return proxyLoadCalendarDay(day);
 	}
+        
+        @Override
+	public ArrayList<Booking> getToRate(CalendarDay day) throws Exception {
+		return proxyGetToRate(day);
+	}
 
 	@Override
 	public ArrayList<Rate> displayRates(int ServiceId) throws Exception {

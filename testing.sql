@@ -20,6 +20,10 @@ INSERT IGNORE INTO RATINGS (id, userId, serviceId, bookingId, rating, review) VA
 INSERT IGNORE INTO BOOKINGS (id, userId, serviceId, date, time) values(2, 1, 1, '2016-05-03', '11:30');
 insert ignore into bookmarks (id, userId, serviceId) values (2, 1, 1);
 insert ignore into serviceproviderinfo(id, name, type, location, website, rating, price) values( 1, "foo", "bar", "bla", "web", 5.968, 99.99);
+insert ignore into serviceproviderinfo(id, name,  location, type, website, rating, price) values( 2, "hfoo", "bar", "housekeeping", "web", 4.968, 99.99);
+insert ignore into serviceproviderinfo(id, name,  location, type,  website, rating, price) values( 3, "ffoo", "bar", "food", "web", 3.8, 99.99);
+insert ignore into serviceproviderinfo(id, name,  location,type, website, rating, price) values( 4, "wfoo", "bar", "health", "web", 4.68, 99.99);
 insert ignore into userinfo(id, uname, password) values (1, "kt", "password");
+
 
 

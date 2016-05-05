@@ -148,7 +148,7 @@ public class ServerConnector {
 		 */
 		 //Gayatri: Add '%%' when attributes are null
 		   QueryInfo info = new QueryInfo();
-		   info.setServiceName("%x%");
+		   info.setServiceName("%%");
 		   info.setLocation("%%");
 		   info.setType("%%");
 		   ArrayList<Service> res =  (ArrayList<Service>) conn.sendRequest(Constants.URL.concat(Constants.URL_SEARCH_SERVICE),info);

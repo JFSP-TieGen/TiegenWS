@@ -48,6 +48,11 @@
     <servlet-name>ViewCalendarDay</servlet-name>
     <servlet-class>com.cmu.tiegen.controller.ViewCalendarDayCtl</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>GetToRate</servlet-name>
+    <servlet-class>com.cmu.tiegen.controller.GetToRateCtl</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>signUp</servlet-name>
     <url-pattern>/client/signUp</url-pattern>
@@ -95,6 +100,11 @@
   <servlet-mapping>
     <servlet-name>ViewCalendarDay</servlet-name>
     <url-pattern>/client/viewCalendarDay</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>GetToRate</servlet-name>
+    <url-pattern>/client/getToRate</url-pattern>
   </servlet-mapping>
 
   <resource-env-ref>

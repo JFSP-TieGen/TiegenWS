@@ -57,8 +57,25 @@ public class BookingDao extends Db {
 		while (rs.next()) {
 			Booking booking = new Booking(uid, rs.getInt(2), rs.getDate(3));
 			booking.setOrderId(rs.getInt(1));
-			booking.setServiceName(rs.getString(4));
-			booking.setTime(rs.getString(5));
+			booking.setServiceName(rs.getString(5));
+			booking.setTime(rs.getString(4));
+			retList.add(booking);
+		}
+		stmt.close();
+		return retList;
+    }
+    
+    public ArrayList<Booking> getAllBookingsToRate(int uid, Date date) throws SQLException{
+    	PreparedStatement stmt = this.connection.prepareStatement(dbProps.getProperty("booking_get_all_to_rate"));
+		stmt.setInt(1, uid);
+		stmt.setDate(2,new java.sql.Date(fixDate(date)));
+		ResultSet rs = stmt.executeQuery();
+		ArrayList<Booking> retList = new ArrayList<>();
+		while (rs.next()) {
+			Booking booking = new Booking(uid, rs.getInt(2), rs.getDate(3));
+			booking.setOrderId(rs.getInt(1));
+			booking.setServiceName(rs.getString(5));
+			booking.setTime(rs.getString(4));
 			retList.add(booking);
 		}
 		stmt.close();
